@@ -16,38 +16,49 @@ class TicTacToe {
 
     nextTurn(rowIndex, columnIndex) {
 
-        if (this.storage[rowIndex][columnIndex] == null){
-            this.storage[rowIndex][columnIndex] = this.player;
-            this.count++;
-            if(this.player == 'x'){
-                this.player ='o';
+        if(rowIndex>-1&& rowIndex<3 && columnIndex>-1 && columnIndex<3) {
+
+            if (this.storage[rowIndex][columnIndex] == null) {
+                this.storage[rowIndex][columnIndex] = this.player;
+                this.count++;
+                if (this.player == 'x') {
+                    this.player = 'o';
 
 
-           }else {
-             this.player = 'x';
+                } else {
+                    this.player = 'x';
 
-           }
+                }
 
+            }
+            if (this.count >= 3) {
+                if (this.storage[0][0] != null && this.storage[0][1] == this.storage[0][0] && this.storage[0][2] == this.storage[0][1]) {
+                    this.winner = this.storage[0][0];
+                    return this;
+                } else if (this.storage[1][0] != null && this.storage[1][1] == this.storage[1][0] && this.storage[1][1] == this.storage[1][2]) {
+                    this.winner = this.storage[1][0];
+                    return this;
+                } else if (this.storage[2][0] != null && this.storage[2][1] == this.storage[2][0] && this.storage[2][2] == this.storage[2][1]) {
+                    this.winner = this.storage[2][0];
+                } else if (this.storage[0][0] != null && this.storage[1][1] == this.storage[0][0] && this.storage[2][2] == this.storage[0][0]) {
+                    this.winner = this.storage[0][0];
+                    return this;
+                } else if (this.storage[0][2] != null && this.storage[1][1] == this.storage[0][2] && this.storage[2][0] == this.storage[0][2]) {
+                    this.winner = this.storage[0][2];
+                    return this;
+                } else if (this.storage[0][0] != null && this.storage[1][0] == this.storage[0][0] && this.storage[2][0] == this.storage[1][0]) {
+                    this.winner = this.storage[0][0];
+                    return this;
+                } else if (this.storage[0][1] != null && this.storage[1][1] == this.storage[0][1] && this.storage[2][1] == this.storage[1][1]) {
+                    this.winner = this.storage[0][1];
+                    return this;
+                } else if (this.storage[0][2] != null && this.storage[1][2] == this.storage[0][2] && this.storage[2][2] == this.storage[0][2]) {
+                    this.winner = this.storage[0][2];
+                    return this;
+                }
+            }
         }
-
-        if (this.storage[0][0]!=null && this.storage[0][1]==this.storage[0][0] && this.storage[0][2]==this.storage[0][1]){
-            this.winner =this.storage[0][0];
-         } else if (this.storage[1][0]!=null && this.storage[1][1] == this.storage[1][0] &&this.storage[1][1] == this.storage[1][2]){
-            this.winner =this.storage[1][0];
-        } else if (this.storage[2][0]!=null && this.storage[2][1]==this.storage[2][0] && this.storage[2][2]==this.storage[2][1]){
-            this.winner =this.storage[2][0];
-        } else if (this.storage[0][0]!=null && this.storage[1][1]==this.storage[0][0] && this.storage[2][2]==this.storage[0][0]){
-            this.winner =this.storage[0][0];
-        } else if (this.storage[0][2]!=null && this.storage[1][1]==this.storage[0][2] && this.storage[2][0]==this.storage[0][2]){
-            this.winner =this.storage[0][2];
-        } else if (this.storage[0][0]!=null && this.storage[1][0]==this.storage[0][0] && this.storage[2][0]==this.storage[1][0]){
-            this.winner =this.storage[0][0];
-        } else if (this.storage[0][1]!=null && this.storage[1][1]==this.storage[0][1] && this.storage[2][1]==this.storage[1][1]){
-            this.winner =this.storage[0][1];
-        }else if (this.storage[0][2]!=null && this.storage[1][2]==this.storage[0][2] && this.storage[2][2]==this.storage[0][2]){
-            this.winner =this.storage[0][2];
-        }
-
+        
    return this;
     }
 
